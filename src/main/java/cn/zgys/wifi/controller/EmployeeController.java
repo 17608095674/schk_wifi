@@ -129,7 +129,7 @@ public class EmployeeController {
             @RequestParam(value = "account") String account,
             @RequestParam(value = "pwd") String pwd,
             HttpServletRequest request) {
-        Messager msg = new Messager(true, "登录成功@");
+        Messager msg = new Messager(true, "登录成功!");
         try {
             //帐号密码验证成功后将用户信息存入session
             UserBean user = userBeanService.findUserBean(account, pwd);
