@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertNewWFInstanceByEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:WFInterfaceEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WFInterfaceEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Instance_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Step_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Instance_Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Form_URL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobileForm_Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InternetForm_Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Step_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Flow_Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Import_Level" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_ID_Consigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_Name_Consigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_DeptName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Dept_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Receive_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Read_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Finish_Time" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertNewWFInstanceByEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertNewWFInstanceByEntityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertNewWFInstanceByEntity2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:WFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WFInterfaceEntity2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdentityOfSourceSystem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdentityOfOAInterface" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Instance_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Step_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Instance_Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Form_URL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobileForm_Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InternetForm_Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Step_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Flow_Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Import_Level" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_ID_Consigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_Name_Consigned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_DeptName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Dept_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Creat_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Receive_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Read_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Finish_Time" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertNewWFInstanceByEntity2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertNewWFInstanceByEntity2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="instanceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_ID_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_Name_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="finishTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatus2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="instanceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_ID_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_Name_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="finishTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newFormUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatus2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatus2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatus3">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="instanceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_ID_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_Name_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="finishTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newFormUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newMobileFormUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newInternetFormUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatus3Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatus3Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByInterfaceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="interfaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_ID_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_Name_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="finishTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByInterfaceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatusByInterfaceIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByInterfaceID2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="interfaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_ID_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_Name_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="finishTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newFormUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByInterfaceID2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatusByInterfaceID2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByInterfaceID3">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="interfaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_ID_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_Name_Consigned" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="finishTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newFormUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newMobileFormUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newInternetFormUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByInterfaceID3Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatusByInterfaceID3Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newEntity" type="tns:WFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusByEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatusByEntityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusForTokenLogIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newEntity" type="tns:WFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWFInstanceStatusForTokenLogInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateWFInstanceStatusForTokenLogInResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetWFInstanceRead">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="instanceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetWFInstanceReadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetWFInstanceReadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetWFInstanceReadByInterfaceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="interfaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="readTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetWFInstanceReadByInterfaceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetWFInstanceReadByInterfaceIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="instanceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteEntityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEntity2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="interfaceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEntity2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteEntity2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchInsertNewWFInstances">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="entitys" type="tns:ArrayOfWFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWFInterfaceEntity2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WFInterfaceEntity2" nillable="true" type="tns:WFInterfaceEntity2" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BatchInsertNewWFInstancesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchInsertNewWFInstancesResult" type="tns:ArrayOfWFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUpdateWFInstances">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="entitys" type="tns:ArrayOfWFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUpdateWFInstancesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchUpdateWFInstancesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BatchUpdateWFInstancesForTokenLogIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="entitys" type="tns:ArrayOfWFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchUpdateWFInstancesForTokenLogInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchUpdateWFInstancesForTokenLogInResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchDeleteWFInstances">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="entitys" type="tns:ArrayOfWFInterfaceEntity2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchDeleteWFInstancesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchDeleteWFInstancesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInterfaceEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="instanceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInterfaceEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInterfaceEntityResult" type="tns:WFInterfaceEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInterfaceEntity2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="interfaceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInterfaceEntity2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInterfaceEntity2Result" type="tns:WFInterfaceEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserOpinions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="employeeID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserOpinionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserOpinionsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertNewWFInstanceByEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:InsertNewWFInstanceByEntity" />
+  </wsdl:message>
+  <wsdl:message name="InsertNewWFInstanceByEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:InsertNewWFInstanceByEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertNewWFInstanceByEntity2SoapIn">
+    <wsdl:part name="parameters" element="tns:InsertNewWFInstanceByEntity2" />
+  </wsdl:message>
+  <wsdl:message name="InsertNewWFInstanceByEntity2SoapOut">
+    <wsdl:part name="parameters" element="tns:InsertNewWFInstanceByEntity2Response" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatus2SoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatus2" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatus2SoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatus2Response" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatus3SoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatus3" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatus3SoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatus3Response" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByInterfaceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByInterfaceID" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByInterfaceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByInterfaceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByInterfaceID2SoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByInterfaceID2" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByInterfaceID2SoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByInterfaceID2Response" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByInterfaceID3SoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByInterfaceID3" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByInterfaceID3SoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByInterfaceID3Response" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByEntity" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusByEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusByEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusForTokenLogInSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusForTokenLogIn" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWFInstanceStatusForTokenLogInSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWFInstanceStatusForTokenLogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetWFInstanceReadSoapIn">
+    <wsdl:part name="parameters" element="tns:SetWFInstanceRead" />
+  </wsdl:message>
+  <wsdl:message name="SetWFInstanceReadSoapOut">
+    <wsdl:part name="parameters" element="tns:SetWFInstanceReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetWFInstanceReadByInterfaceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SetWFInstanceReadByInterfaceID" />
+  </wsdl:message>
+  <wsdl:message name="SetWFInstanceReadByInterfaceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SetWFInstanceReadByInterfaceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEntity" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEntity2SoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEntity2" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEntity2SoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEntity2Response" />
+  </wsdl:message>
+  <wsdl:message name="BatchInsertNewWFInstancesSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchInsertNewWFInstances" />
+  </wsdl:message>
+  <wsdl:message name="BatchInsertNewWFInstancesSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchInsertNewWFInstancesResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUpdateWFInstancesSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUpdateWFInstances" />
+  </wsdl:message>
+  <wsdl:message name="BatchUpdateWFInstancesSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUpdateWFInstancesResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchUpdateWFInstancesForTokenLogInSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchUpdateWFInstancesForTokenLogIn" />
+  </wsdl:message>
+  <wsdl:message name="BatchUpdateWFInstancesForTokenLogInSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchUpdateWFInstancesForTokenLogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchDeleteWFInstancesSoapIn">
+    <wsdl:part name="parameters" element="tns:BatchDeleteWFInstances" />
+  </wsdl:message>
+  <wsdl:message name="BatchDeleteWFInstancesSoapOut">
+    <wsdl:part name="parameters" element="tns:BatchDeleteWFInstancesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInterfaceEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetInterfaceEntity" />
+  </wsdl:message>
+  <wsdl:message name="GetInterfaceEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetInterfaceEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInterfaceEntity2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetInterfaceEntity2" />
+  </wsdl:message>
+  <wsdl:message name="GetInterfaceEntity2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetInterfaceEntity2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetUserOpinionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserOpinions" />
+  </wsdl:message>
+  <wsdl:message name="GetUserOpinionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserOpinionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OaWfWebServiceSoap">
+    <wsdl:operation name="InsertNewWFInstanceByEntity">
+      <wsdl:input message="tns:InsertNewWFInstanceByEntitySoapIn" />
+      <wsdl:output message="tns:InsertNewWFInstanceByEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewWFInstanceByEntity2">
+      <wsdl:input message="tns:InsertNewWFInstanceByEntity2SoapIn" />
+      <wsdl:output message="tns:InsertNewWFInstanceByEntity2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus">
+      <wsdl:input message="tns:UpdateWFInstanceStatusSoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus2">
+      <wsdl:input message="tns:UpdateWFInstanceStatus2SoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatus2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus3">
+      <wsdl:input message="tns:UpdateWFInstanceStatus3SoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatus3SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID">
+      <wsdl:input message="tns:UpdateWFInstanceStatusByInterfaceIDSoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatusByInterfaceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID2">
+      <wsdl:input message="tns:UpdateWFInstanceStatusByInterfaceID2SoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatusByInterfaceID2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID3">
+      <wsdl:input message="tns:UpdateWFInstanceStatusByInterfaceID3SoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatusByInterfaceID3SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByEntity">
+      <wsdl:input message="tns:UpdateWFInstanceStatusByEntitySoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatusByEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusForTokenLogIn">
+      <wsdl:input message="tns:UpdateWFInstanceStatusForTokenLogInSoapIn" />
+      <wsdl:output message="tns:UpdateWFInstanceStatusForTokenLogInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetWFInstanceRead">
+      <wsdl:input message="tns:SetWFInstanceReadSoapIn" />
+      <wsdl:output message="tns:SetWFInstanceReadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetWFInstanceReadByInterfaceID">
+      <wsdl:input message="tns:SetWFInstanceReadByInterfaceIDSoapIn" />
+      <wsdl:output message="tns:SetWFInstanceReadByInterfaceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEntity">
+      <wsdl:input message="tns:DeleteEntitySoapIn" />
+      <wsdl:output message="tns:DeleteEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEntity2">
+      <wsdl:input message="tns:DeleteEntity2SoapIn" />
+      <wsdl:output message="tns:DeleteEntity2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchInsertNewWFInstances">
+      <wsdl:input message="tns:BatchInsertNewWFInstancesSoapIn" />
+      <wsdl:output message="tns:BatchInsertNewWFInstancesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpdateWFInstances">
+      <wsdl:input message="tns:BatchUpdateWFInstancesSoapIn" />
+      <wsdl:output message="tns:BatchUpdateWFInstancesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpdateWFInstancesForTokenLogIn">
+      <wsdl:input message="tns:BatchUpdateWFInstancesForTokenLogInSoapIn" />
+      <wsdl:output message="tns:BatchUpdateWFInstancesForTokenLogInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchDeleteWFInstances">
+      <wsdl:input message="tns:BatchDeleteWFInstancesSoapIn" />
+      <wsdl:output message="tns:BatchDeleteWFInstancesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInterfaceEntity">
+      <wsdl:input message="tns:GetInterfaceEntitySoapIn" />
+      <wsdl:output message="tns:GetInterfaceEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInterfaceEntity2">
+      <wsdl:input message="tns:GetInterfaceEntity2SoapIn" />
+      <wsdl:output message="tns:GetInterfaceEntity2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOpinions">
+      <wsdl:input message="tns:GetUserOpinionsSoapIn" />
+      <wsdl:output message="tns:GetUserOpinionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OaWfWebServiceSoap" type="tns:OaWfWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertNewWFInstanceByEntity">
+      <soap:operation soapAction="http://tempuri.org/InsertNewWFInstanceByEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewWFInstanceByEntity2">
+      <soap:operation soapAction="http://tempuri.org/InsertNewWFInstanceByEntity2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus2">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatus2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus3">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatus3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByInterfaceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID2">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByInterfaceID2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID3">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByInterfaceID3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByEntity">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusForTokenLogIn">
+      <soap:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusForTokenLogIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetWFInstanceRead">
+      <soap:operation soapAction="http://tempuri.org/SetWFInstanceRead" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetWFInstanceReadByInterfaceID">
+      <soap:operation soapAction="http://tempuri.org/SetWFInstanceReadByInterfaceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEntity">
+      <soap:operation soapAction="http://tempuri.org/DeleteEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEntity2">
+      <soap:operation soapAction="http://tempuri.org/DeleteEntity2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchInsertNewWFInstances">
+      <soap:operation soapAction="http://tempuri.org/BatchInsertNewWFInstances" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpdateWFInstances">
+      <soap:operation soapAction="http://tempuri.org/BatchUpdateWFInstances" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpdateWFInstancesForTokenLogIn">
+      <soap:operation soapAction="http://tempuri.org/BatchUpdateWFInstancesForTokenLogIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchDeleteWFInstances">
+      <soap:operation soapAction="http://tempuri.org/BatchDeleteWFInstances" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterfaceEntity">
+      <soap:operation soapAction="http://tempuri.org/GetInterfaceEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterfaceEntity2">
+      <soap:operation soapAction="http://tempuri.org/GetInterfaceEntity2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOpinions">
+      <soap:operation soapAction="http://tempuri.org/GetUserOpinions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OaWfWebServiceSoap12" type="tns:OaWfWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertNewWFInstanceByEntity">
+      <soap12:operation soapAction="http://tempuri.org/InsertNewWFInstanceByEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewWFInstanceByEntity2">
+      <soap12:operation soapAction="http://tempuri.org/InsertNewWFInstanceByEntity2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus2">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatus2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatus3">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatus3" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByInterfaceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID2">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByInterfaceID2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByInterfaceID3">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByInterfaceID3" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusByEntity">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusByEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWFInstanceStatusForTokenLogIn">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWFInstanceStatusForTokenLogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetWFInstanceRead">
+      <soap12:operation soapAction="http://tempuri.org/SetWFInstanceRead" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetWFInstanceReadByInterfaceID">
+      <soap12:operation soapAction="http://tempuri.org/SetWFInstanceReadByInterfaceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEntity">
+      <soap12:operation soapAction="http://tempuri.org/DeleteEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEntity2">
+      <soap12:operation soapAction="http://tempuri.org/DeleteEntity2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchInsertNewWFInstances">
+      <soap12:operation soapAction="http://tempuri.org/BatchInsertNewWFInstances" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpdateWFInstances">
+      <soap12:operation soapAction="http://tempuri.org/BatchUpdateWFInstances" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchUpdateWFInstancesForTokenLogIn">
+      <soap12:operation soapAction="http://tempuri.org/BatchUpdateWFInstancesForTokenLogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchDeleteWFInstances">
+      <soap12:operation soapAction="http://tempuri.org/BatchDeleteWFInstances" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterfaceEntity">
+      <soap12:operation soapAction="http://tempuri.org/GetInterfaceEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterfaceEntity2">
+      <soap12:operation soapAction="http://tempuri.org/GetInterfaceEntity2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOpinions">
+      <soap12:operation soapAction="http://tempuri.org/GetUserOpinions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OaWfWebService">
+    <wsdl:port name="OaWfWebServiceSoap" binding="tns:OaWfWebServiceSoap">
+      <soap:address location="http://172.18.8.92/wfi/OaWfWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OaWfWebServiceSoap12" binding="tns:OaWfWebServiceSoap12">
+      <soap12:address location="http://172.18.8.92/wfi/OaWfWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

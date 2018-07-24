@@ -1,0 +1,297 @@
+body {
+  background: url('../images/bg.png') no-repeat center center;
+  background-size: cover;
+  background-position: 0 0;
+}
+
+.form-group {
+  margin-left: 15px;
+  margin-right: 20px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: none;
+}
+
+.btn-default:hover {
+  color: #fff;
+  background-color: #FF0000;
+}
+
+.form-control {
+  background-color: #BBBAB6;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 5px center;
+  padding-left: 30px;
+  margin-top: 25px;
+}
+
+.form-control::-moz-placeholder {
+  color: #EFF0EE;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #EFF0EE;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #EFF0EE;
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  background-color: #BBBAB6;
+}
+
+.modal-title {
+  color: #838383;
+  font-size: 20px;
+}
+
+.modal-body {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.preloader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9;
+  background: #FFF;
+}
+
+.status {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  background-image: url('../images/preloader.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.logo {
+  width: 80%;
+  height: 80%;
+  padding: 10px 0;
+  margin-left: 20px;
+}
+
+.intro-form {
+  color: #fff;
+  font-family: "Microsoft Yahei";
+  background: url('../images/icon_bj01.png') no-repeat center center;
+  background-size: 100% 100%;
+  margin-top: 100px;
+}
+
+.icon-user {
+  background-image: url('../images/icon-user.png');
+  margin-top: 50px;
+}
+
+.icon-psw {
+  background-image: url('../images/icon-psw.png');
+  padding-right: 35px;
+}
+
+.psw-status {
+  pointer-events: all;
+}
+
+.wifi-auth {
+  background-image: url('../images/icon-select.png');
+  padding-left: 27px;
+  margin-top: 25px;
+  color: #EFF0EE;
+}
+
+.btn-submit {
+  color: #80807F;
+  border: 2px solid #80807F;
+  width: 100%;
+  border-radius: 20px;
+  background-color: transparent;
+  margin-top: 20px;
+}
+
+.btn-submit-else {
+  color: #80807F;
+  border: 2px solid #80807F;
+  width: 100%;
+  border-radius: 20px;
+  background-color: transparent;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.register-form {
+  color: #fff;
+  font-family: "Microsoft Yahei";
+  background: url('../images/icon_bj02.png') no-repeat center center;
+  background-size: 100% 100%;
+  margin-top: 30px;
+}
+
+.form-title {
+  color: #80807F;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.icon-name {
+  background-image: url('../images/icon-user.png');
+}
+
+.icon-phone {
+  background-image: url('../images/icon-phone.png');
+  margin-top: 10px;
+}
+
+.icon-ID-Card {
+  background-image: url('../images/icon-ID-Card.png');
+}
+
+.icon-date {
+  background-image: url('../images/icon-active-time.png');
+}
+
+.icon-apName {
+  background-image: url('../images/icon-apName.png');
+}
+
+.icon-elnumber {
+  background-image: url('../images/icon-elnumber.png');
+}
+
+.icon-reason {
+  padding-left: 5px;
+}
+
+.icon-department {
+  background-image: url('../images/icon-department.png');
+  padding-left: 27px;
+  margin-top: 25px;
+  color: #EFF0EE;
+}
+
+.icon-active-time {
+  margin-top: 0;
+  background-image: url('../images/icon-active-time.png');
+}
+
+.form_datetime {
+  margin-top: 25px;
+}
+
+.btn-getcode {
+  margin-top: 10px;
+  background-color: #2DA9FF;
+}
+
+.btn-getcode:hover {
+  border: 0;
+}
+
+.btn-submit:hover,
+.btn-submit-else:hover {
+  border: 2px solid #FF0000;
+}
+
+.bottomstyle {
+  margin-bottom: 30px;
+  display: none;
+}
+
+.modal-icon {
+  margin-top: -5px;
+}
+
+.modal-text {
+  color: #8D8D8D;
+}
+
+.modal-div {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.modal-img {
+  width: 30px;
+  height: 30px;
+}
+
+.modal-desc {
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.out-of-time {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.btn-ok {
+  padding: 10px 30px;
+  background-color: #2DA9FF;
+  border-radius: 20px;
+}
+
+.modal-dialog {
+  width: 300px;
+  margin: 150px auto;
+}
+
+@media screen and (min-width: 500px) {
+  .form-scroll {
+    position: relative;
+    height: 340px;
+    overflow: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    background-image: url('../images/bj.jpg');
+    background-size: 100% auto;
+  }
+
+  .header {
+    display: none;
+  }
+
+  .bottomstyle {
+    display: block;
+  }
+
+  .intro-form {
+    background-image: none;
+    margin-top: 250px;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .register-form {
+    background-image: none;
+    margin-left: 10%;
+    width: 80%;
+  }
+}

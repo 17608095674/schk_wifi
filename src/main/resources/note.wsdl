@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ExecuteCommand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlCommand" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteCommandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteCommandResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ExecuteCommandSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteCommand" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteCommandSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteCommandResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SMS2009Soap">
+    <wsdl:operation name="ExecuteCommand">
+      <wsdl:input message="tns:ExecuteCommandSoapIn" />
+      <wsdl:output message="tns:ExecuteCommandSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMS2009Soap" type="tns:SMS2009Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExecuteCommand">
+      <soap:operation soapAction="http://tempuri.org/ExecuteCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMS2009Soap12" type="tns:SMS2009Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExecuteCommand">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteCommand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMS2009">
+    <wsdl:port name="SMS2009Soap" binding="tns:SMS2009Soap">
+      <soap:address location="http://192.1.1.249/Scal.SMS2009.WebService/SMS2009.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SMS2009Soap12" binding="tns:SMS2009Soap12">
+      <soap12:address location="http://192.1.1.249/Scal.SMS2009.WebService/SMS2009.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
