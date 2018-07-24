@@ -250,7 +250,7 @@
 
     //验证码
     $("#code-btn").click(function () {
-        var that = $(this)
+        var that = $(this);
         var phoneNumber = $("#phoneNumber").val();
         if (phoneNumber == "" || phoneNumber == null) {
             alert("手机号码不能为空！");
