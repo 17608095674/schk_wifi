@@ -51,47 +51,31 @@ public interface StaffService {
 	
 	/**
 	 * 内网第一级审批
-	 * @param realName
 	 * @param phoneNumber
-	 * @param idCard
-	 * @param name
-	 * @param account
 	 * @param day
-	 * @param reason
-	 * @param apn1 第一级审批人姓名
 	 * @param date1 第一级审批时间
 	 * @return
 	 */
-	String approve1(String realName,String phoneNumber,String idCard,String name,String account,String day,String reason,String apn1,String apa1,String date1);
-	/**
-	 * 内网第二级审批
-	 * @param realName
-	 * @param phoneNumber
-	 * @param idCard
-	 * @param name
-	 * @param account
-	 * @param day
-	 * @param reason
-	 * @param apn1
-	 * @param apa1
-	 * @param date1
-	 * @param apn2
-	 * @param apa2
-	 * @param date2
-	 * @return
-	 */
-	String approve2(String realName,String phoneNumber,String idCard,String name,String account,String day,String reason,String apn1,String apa1,String date1,String apn2,String apa2,String date2);	
+	String approve1(String phoneNumber,String day,String apa1,String date1);
+
 	/**
 	 * 内网审批通过
 	 * @param phoneNumber
 	 * @param day
 	 * @return
 	 */
-	String approve3(String phoneNumber,String day);
+	String approve2(String phoneNumber,String day);
 	/**
 	 * 驳回
 	 * @param phoneNumber
 	 * @return
 	 */
-	String ref(String phoneNumber);
+	String ref(String phoneNumber,String step);
+
+	/**
+	 * 根据手机号码查询信息
+	 * @param phoneNumber
+	 * @return
+	 */
+	Staff staff(String phoneNumber);
 }

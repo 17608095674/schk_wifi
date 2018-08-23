@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>无线网络申请</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/admin.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/echarts.min.js"></script>
+    <script src="assets/js/gbk.js"></script>
 </head>
 <script src="assets/js/jquery.min.js"></script>
 <style type="text/css">
@@ -119,7 +120,7 @@
 </style>
 <body data-type="index">
 
-<div class="tpl-page-container tpl-page-header-fixed" style="margin-top: 0px;">
+<div class="tpl-page-container tpl-page-header-fixed" style="margin-top: 0px;" id="all">
     <div class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6"
          style="background:#F5F5F5;">
 
@@ -229,28 +230,53 @@
 <script type="text/javascript">
 
 
+
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if (r != null) return decodeURI(r[2]);
+        if (r != null) return $URL.decode(r[2]);
         return null;
-        //unescape编码级
+        //unescape编码级  decodeURI
     }
 
     window.onload = function () {
-        //加载初始化数据
-        loadInit1();
+        var explorer =navigator.userAgent ;
+        console.log(navigator.appName);
+        //IE浏览器
+        if (explorer.indexOf("MSIE") >= 0) {
+            // alert("浏览器版本过低，请用其它浏览器打开！");
+            // window.close();
+            window.location.href = 'http://172.18.81.246:80/fault';
+        }else{
+            //加载初始化数据
+            loadInit1();
+        }
     };
-
     //加载初始化数据
     function loadInit1() {
+        var phoneNumber = GetQueryString("phoneNumber");
         //在这里写你要加载的数据（可以采用jquery的ajax调用，异步、同步均可以）
-        $("#realName").html(GetQueryString("realName"));
+        // $("#realName").html(GetQueryString("realName"));
         $("#phoneNumber").html(GetQueryString("phoneNumber"));
-        $("#idCard").html(GetQueryString("idCard"));
-        $("#name").html(GetQueryString("name") + "(" + GetQueryString("account") + ")");
+        // $("#idCard").html(GetQueryString("idCard"));
+        // $("#name").html(GetQueryString("name") + "(" + GetQueryString("account") + ")");
         $("#day").html(GetQueryString("day"));
-        $("#reason").html(GetQueryString("reason"));
+        // $("#reason").html(GetQueryString("reason"));
+        $.ajax({
+            type: 'Get',
+            url: "/api/staff",
+            data: {phoneNumber: phoneNumber},
+            dataType: "json",
+            success: function (result) {
+               console.log(result);
+                $("#realName").html(result.realName);
+                $("#idCard").html(result.idCard);
+                $("#name").html(result.business);
+                $("#day").html(result.day);
+                $("#reason").html(result.reason);
+            }
+        });
+
     }
 
     Date.prototype.Format = function (fmt) { // author: meizz
@@ -270,52 +296,77 @@
     }
     //通过
     $("#passbtn").click(function () {
-        $("#apn").html(GetQueryString("apn"));
         $("#date1").html(new Date().Format('yyyy-MM-dd hh:mm:ss'));
         $("#div2").hide();
         $("#idea").hide();
         $("#btn").hide();
         $("#div1").show();
+        var apa =  GetQueryString("apa");
         var day = GetQueryString("day");
         var phoneNumber = GetQueryString("phoneNumber");
         console.log(day + phoneNumber);
         $.ajax({
+            type: 'Get',
+            url: "/approve/findByAccount",
+            data: {account: apa},
+            dataType: "json",
+            success: function (result) {
+                $("#apn").html(result.name);
+            }
+        });
+        $.ajax({
             type: 'Post',
-            url: "http://localhost:80/api/check",
+            url: "/api/check",
             data: {day: day, phoneNumber: phoneNumber},
             dataType: "json",
             success: function (result) {
                 $("#opinion").html("审批通过");
                 alert(result["information"]);
+                window.close();
             }
         });
     });
     //驳回
     $("#refbtn").click(function () {
-        $("#apn").html(GetQueryString("apn"));
         $("#date1").html(new Date().Format('yyyy-MM-dd hh:mm:ss'));
         $("#div2").hide();
         $("#idea").hide();
         $("#btn").hide();
         $("#div1").show();
+        var apa =  GetQueryString("apa");
         var phoneNumber = GetQueryString("phoneNumber");
+        $.ajax({
+            type: 'Get',
+            url: "/approve/findByAccount",
+            data: {account: apa},
+            dataType: "json",
+            success: function (result) {
+                $("#apn").html(result.name);
+            }
+        });
         //处理
         $.ajax({
             type: 'Post',
-            url: "http://localhost:80/api/ref",
-            data: {phoneNumber: phoneNumber},
+            url: "/api/ref",
+            data: {phoneNumber: phoneNumber,step:"1"},
             dataType: "json",
             success: function (result) {
                 $("#opinion").html("已驳回");
+                alert(result["information"]);
+                window.close();
             }
         });
 
     });
 
     //关闭窗口刷新页面
-    window.onunload = function () {
-        window.parent.location.href = 'http://172.31.48.32/mybox/fleshopener.htm';
-    };
+    // window.onbeforeunload = function() {
+    //     window.opener.location.reload();
+    // };
+    // window.onunload = function () {
+    //     //window.parent.location.href = 'http://172.31.48.32/mybox/fleshopener.htm';
+    //     //window.parent.location.href = 'www.baidu.com';
+    // };
 
 
     /* $(window).unload(function(){

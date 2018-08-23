@@ -8,10 +8,9 @@
 package cn.schk.portaltest;
 
 public interface ValidEffectUserService extends javax.xml.rpc.Service {
-	
-    public java.lang.String getValidEffectUserAddress();
+    public String getValidEffectUserAddress();
 
-    public cn.schk.portaltest.ValidEffectUser_PortType getValidEffectUser() throws javax.xml.rpc.ServiceException;
+    public ValidEffectUser_PortType getValidEffectUser() throws javax.xml.rpc.ServiceException;
 
-    public cn.schk.portaltest.ValidEffectUser_PortType getValidEffectUser(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+    public ValidEffectUser_PortType getValidEffectUser(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
 }

@@ -36,9 +36,6 @@ $(function(){
                 	if("3"==level){
                 		level = "机房网络室领导";
                 	}
-                	if("4"==level){
-                		level = "信息服务部经理";
-                	}
                 	
                     str += "<tr>" + 
                     "<td><span>" + (parseInt(i)+1) + "</span></td>" +
@@ -115,9 +112,7 @@ $(function(){
                     	if("3"==level){
                     		level = "机房网络室领导";
                     	}
-                    	if("4"==level){
-                    		level = "信息服务部经理";
-                    	}
+
                     	
                         str += "<tr>" + 
                         "<td><span>" + (parseInt(i)+1) + "</span></td>" +
@@ -169,9 +164,7 @@ $(function(){
                 	if("3"==level){
                 		level = "机房网络室领导";
                 	}
-                	if("4"==level){
-                		level = "信息服务部经理";
-                	}
+
                 	
                     str += "<tr>" + 
                     "<td><span>" + (parseInt(i)+1) + "</span></td>" +
@@ -229,9 +222,7 @@ $(function(){
                 	if("3"==level){
                 		level = "机房网络室领导";
                 	}
-                	if("4"==level){
-                		level = "信息服务部经理";
-                	}
+
                 	
                     str += "<tr>" + 
                     "<td><span>" + (parseInt(i)+1) + "</span></td>" +

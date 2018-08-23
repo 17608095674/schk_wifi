@@ -126,6 +126,7 @@
                                 <tr>
                                     <th class="table-check"></th>
                                     <th class="table-type">用户名</th>
+                                    <th class="table-type">密码</th>
                                     <th class="table-type">姓名</th>
                                     <th class="table-type">身份证号码</th>
                                     <th class="table-type">区域</th>

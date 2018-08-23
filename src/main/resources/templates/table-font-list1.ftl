@@ -85,12 +85,22 @@
                     var name = $("#input-name").val();
                     var department = $("#input-department").val();
                     var level = $("#select-level").val();
+                    var patt1 = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
+                    var patt2 = /(^SCALG\d{4}$)|(^[0-9]{6}$)/;
                     if (account == "" || account == null) {
                         alert("帐号不能为空！");
                         return;
                     }
+                    if (!patt2.test(account)) {
+                        alert("帐号格式错误！");
+                        return;
+                    }
                     if (name == "" || name == null) {
                         alert("姓名不能为空！");
+                        return;
+                    }
+                    if (!patt1.test(name)) {
+                        alert("姓名格式错误！");
                         return;
                     }
                     console.log(account);
@@ -263,7 +273,6 @@
                                             <option value="1">业务受理人</option>
                                             <option value="2">网络审核人员</option>
                                             <option value="3">机房网络室领导</option>
-                                            <option value="4">信息服务部经理</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -316,7 +325,6 @@
                                             <option value="1">业务受理人</option>
                                             <option value="2">网络审核人员</option>
                                             <option value="3">机房网络室领导</option>
-                                            <option value="4">信息服务部经理</option>
                                         </select>
                                     </td>
                                 </tr>

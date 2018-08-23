@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/admin.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/echarts.min.js"></script>
+    <script src="assets/js/gbk.js"></script>
 </head>
 <script src="assets/js/jquery.min.js"></script>
 <style type="text/css">
@@ -213,16 +214,6 @@
                     <br>
                 </div>
             </div>
-            <div>
-                <span class="am-badge am-badge-secondary am-text-lg" style="margin-left: 8%;">3</span>
-                <span class="sp5">信息服务部经理审批</span>
-                <div style="display: block;">
-                    <div>
-                        <span class="sp6">待审核</span>
-                    </div>
-                    <br>
-                </div>
-            </div>
 
             <div class="am-panel-hd" id="idea">
                 <h3 class="am-panel-title">&nbsp;您的意见</h3>
@@ -251,25 +242,44 @@
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if (r != null) return decodeURI(r[2]);
+        if (r != null) return $URL.decode(r[2]);
         return null;
         //unescape编码级
     }
 
     window.onload = function () {
-        //加载初始化数据
-        loadInit1();
+        var explorer =navigator.userAgent ;
+        console.log(navigator.appName);
+        //IE浏览器
+        if (explorer.indexOf("MSIE") >= 0) {
+            // alert("浏览器版本过低，请用其它浏览器打开！");
+            // window.close();
+            window.location.href = 'http://172.18.81.246:80/fault';
+        }else{
+            //加载初始化数据
+            loadInit1();
+        }
     };
 
     //加载初始化数据
     function loadInit1() {
+        var phoneNumber = GetQueryString("phoneNumber");
         //在这里写你要加载的数据（可以采用jquery的ajax调用，异步、同步均可以）
-        $("#realName").html(GetQueryString("realName"));
         $("#phoneNumber").html(GetQueryString("phoneNumber"));
-        $("#idCard").html(GetQueryString("idCard"));
-        $("#name").html(GetQueryString("name") + "(" + GetQueryString("account") + ")");
         $("#day").html(GetQueryString("day"));
-        $("#reason").html(GetQueryString("reason"));
+        $.ajax({
+            type: 'Get',
+            url: "/api/staff",
+            data: {phoneNumber: phoneNumber},
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                $("#realName").html(result.realName);
+                $("#idCard").html(result.idCard);
+                $("#name").html(result.business);
+                $("#reason").html(result.reason);
+            }
+        });
     }
 
     Date.prototype.Format = function (fmt) { // author: meizz
@@ -289,7 +299,6 @@
     }
     //通过
     $("#passbtn").click(function () {
-        $("#apn1").html(GetQueryString("apn1"));
         $("#date1").html(new Date().Format('yyyy-MM-dd hh:mm:ss'));
         $("#div2").hide();
         $("#idea").hide();
@@ -297,56 +306,65 @@
         $("#div1").show();
         var day = GetQueryString("day");
         var phoneNumber = GetQueryString("phoneNumber");
-        var realName = GetQueryString("realName");
-        var idCard = GetQueryString("idCard");
-        var name = GetQueryString("name");
-        var account = GetQueryString("account");
-        var reason = GetQueryString("reason");
         var apa1 = GetQueryString("apa1");
-        var apn1 = GetQueryString("apn1");
         var date1 = $("#date1").html();
         console.log(day + phoneNumber);
+        $.ajax({
+            type: 'Get',
+            url: "/approve/findByAccount",
+            data: {account: apa1},
+            dataType: "json",
+            success: function (result) {
+                $("#apn1").html(result.name);
+            }
+        });
         $.ajax({
             type: 'Post',
             url: "/api/approve1",
             data: {
                 day: day,
                 phoneNumber: phoneNumber,
-                realName: realName,
-                idCard: idCard,
-                name: name,
-                account: account,
-                reason: reason,
                 apa1: apa1,
-                apn1: apn1,
                 date1: date1
             },
             dataType: "json",
             success: function (result) {
-                alert("审批通过");
                 $("#opinion1").html("审批通过");
+                alert("审批通过");
+                window.close();
             }
         });
     });
 
     //驳回
     $("#refbtn").click(function () {
-        $("#apn1").html(GetQueryString("apn1"));
         $("#opinion1").html("已驳回");
         $("#date1").html(new Date().Format('yyyy-MM-dd hh:mm:ss'));
         $("#div2").hide();
         $("#idea").hide();
         $("#btn").hide();
         $("#div1").show();
+        var apa1 = GetQueryString("apa1");
         var phoneNumber = GetQueryString("phoneNumber");
+        $.ajax({
+            type: 'Get',
+            url: "/approve/findByAccount",
+            data: {account: apa1},
+            dataType: "json",
+            success: function (result) {
+                $("#apn1").html(result.name);
+            }
+        });
         //处理
         $.ajax({
             type: 'Post',
             url: "/api/ref",
-            data: {phoneNumber: phoneNumber},
+            data: {phoneNumber: phoneNumber,step:"1"},
             dataType: "json",
             success: function (result) {
                 $("#opinion1").html("已驳回");
+                alert(result["information"]);
+                window.close();
             }
         });
 

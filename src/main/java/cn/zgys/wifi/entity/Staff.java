@@ -39,8 +39,17 @@ public class Staff implements Serializable {
 	private String idCard;
 	//流水号
 	private String instanceId;
+	//原因
+	private String reason;
+	//业务受理人信息
+	private String business;
+	//网络类别
+	private String lit;
 	//状态
 	private int status;
+	//申请时间
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createTime;
 	//过期时间
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date overtime;

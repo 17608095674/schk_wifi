@@ -8,5 +8,5 @@
 package cn.schk.portaltest;
 
 public interface ValidEffectUser_PortType extends java.rmi.Remote {
-    public java.lang.String validatorLegalUser(java.lang.String empNo, java.lang.String password) throws java.rmi.RemoteException;
+    public String validatorLegalUser(String empNo, String password) throws java.rmi.RemoteException;
 }

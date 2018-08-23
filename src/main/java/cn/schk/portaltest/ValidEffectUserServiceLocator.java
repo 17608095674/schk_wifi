@@ -7,7 +7,7 @@
 
 package cn.schk.portaltest;
 
-public class ValidEffectUserServiceLocator extends org.apache.axis.client.Service implements cn.schk.portaltest.ValidEffectUserService {
+public class ValidEffectUserServiceLocator extends org.apache.axis.client.Service implements ValidEffectUserService {
 
     public ValidEffectUserServiceLocator() {
     }
@@ -17,29 +17,29 @@ public class ValidEffectUserServiceLocator extends org.apache.axis.client.Servic
         super(config);
     }
 
-    public ValidEffectUserServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
+    public ValidEffectUserServiceLocator(String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
         super(wsdlLoc, sName);
     }
 
     // Use to get a proxy class for ValidEffectUser
-    private java.lang.String ValidEffectUser_address = "http://172.18.8.42:10000/SINGPOINT/services/ValidEffectUser";
+    private String ValidEffectUser_address = "http://172.18.8.42:10000/SINGPOINT/services/ValidEffectUser";
 
-    public java.lang.String getValidEffectUserAddress() {
+    public String getValidEffectUserAddress() {
         return ValidEffectUser_address;
     }
 
     // The WSDD service name defaults to the port name.
-    private java.lang.String ValidEffectUserWSDDServiceName = "ValidEffectUser";
+    private String ValidEffectUserWSDDServiceName = "ValidEffectUser";
 
-    public java.lang.String getValidEffectUserWSDDServiceName() {
+    public String getValidEffectUserWSDDServiceName() {
         return ValidEffectUserWSDDServiceName;
     }
 
-    public void setValidEffectUserWSDDServiceName(java.lang.String name) {
+    public void setValidEffectUserWSDDServiceName(String name) {
         ValidEffectUserWSDDServiceName = name;
     }
 
-    public cn.schk.portaltest.ValidEffectUser_PortType getValidEffectUser() throws javax.xml.rpc.ServiceException {
+    public ValidEffectUser_PortType getValidEffectUser() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(ValidEffectUser_address);
@@ -50,9 +50,9 @@ public class ValidEffectUserServiceLocator extends org.apache.axis.client.Servic
         return getValidEffectUser(endpoint);
     }
 
-    public cn.schk.portaltest.ValidEffectUser_PortType getValidEffectUser(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public ValidEffectUser_PortType getValidEffectUser(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            cn.schk.portaltest.ValidEffectUserSoapBindingStub _stub = new cn.schk.portaltest.ValidEffectUserSoapBindingStub(portAddress, this);
+            ValidEffectUserSoapBindingStub _stub = new ValidEffectUserSoapBindingStub(portAddress, this);
             _stub.setPortName(getValidEffectUserWSDDServiceName());
             return _stub;
         }
@@ -61,7 +61,7 @@ public class ValidEffectUserServiceLocator extends org.apache.axis.client.Servic
         }
     }
 
-    public void setValidEffectUserEndpointAddress(java.lang.String address) {
+    public void setValidEffectUserEndpointAddress(String address) {
         ValidEffectUser_address = address;
     }
 
@@ -72,13 +72,13 @@ public class ValidEffectUserServiceLocator extends org.apache.axis.client.Servic
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (cn.schk.portaltest.ValidEffectUser_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                cn.schk.portaltest.ValidEffectUserSoapBindingStub _stub = new cn.schk.portaltest.ValidEffectUserSoapBindingStub(new java.net.URL(ValidEffectUser_address), this);
+            if (ValidEffectUser_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
+                ValidEffectUserSoapBindingStub _stub = new ValidEffectUserSoapBindingStub(new java.net.URL(ValidEffectUser_address), this);
                 _stub.setPortName(getValidEffectUserWSDDServiceName());
                 return _stub;
             }
         }
-        catch (java.lang.Throwable t) {
+        catch (Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -93,7 +93,7 @@ public class ValidEffectUserServiceLocator extends org.apache.axis.client.Servic
         if (portName == null) {
             return getPort(serviceEndpointInterface);
         }
-        java.lang.String inputPortName = portName.getLocalPart();
+        String inputPortName = portName.getLocalPart();
         if ("ValidEffectUser".equals(inputPortName)) {
             return getValidEffectUser();
         }
@@ -121,7 +121,7 @@ public class ValidEffectUserServiceLocator extends org.apache.axis.client.Servic
     /**
     * Set the endpoint address for the specified port name.
     */
-    public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
+    public void setEndpointAddress(String portName, String address) throws javax.xml.rpc.ServiceException {
         
 if ("ValidEffectUser".equals(portName)) {
             setValidEffectUserEndpointAddress(address);
@@ -135,7 +135,7 @@ if ("ValidEffectUser".equals(portName)) {
     /**
     * Set the endpoint address for the specified port name.
     */
-    public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
+    public void setEndpointAddress(javax.xml.namespace.QName portName, String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }
 

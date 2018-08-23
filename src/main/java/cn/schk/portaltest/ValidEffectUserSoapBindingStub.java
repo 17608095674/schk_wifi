@@ -7,7 +7,7 @@
 
 package cn.schk.portaltest;
 
-public class ValidEffectUserSoapBindingStub extends org.apache.axis.client.Stub implements cn.schk.portaltest.ValidEffectUser_PortType {
+public class ValidEffectUserSoapBindingStub extends org.apache.axis.client.Stub implements ValidEffectUser_PortType {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
@@ -25,12 +25,12 @@ public class ValidEffectUserSoapBindingStub extends org.apache.axis.client.Stub 
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("validatorLegalUser");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "empNo"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "empNo"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "password"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "password"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        oper.setReturnClass(java.lang.String.class);
+        oper.setReturnClass(String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "validatorLegalUserReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
@@ -79,17 +79,17 @@ public class ValidEffectUserSoapBindingStub extends org.apache.axis.client.Stub 
             }
             java.util.Enumeration keys = super.cachedProperties.keys();
             while (keys.hasMoreElements()) {
-                java.lang.String key = (java.lang.String) keys.nextElement();
+                String key = (String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
             return _call;
         }
-        catch (java.lang.Throwable _t) {
+        catch (Throwable _t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", _t);
         }
     }
 
-    public java.lang.String validatorLegalUser(java.lang.String empNo, java.lang.String password) throws java.rmi.RemoteException {
+    public String validatorLegalUser(String empNo, String password) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -102,7 +102,7 @@ public class ValidEffectUserSoapBindingStub extends org.apache.axis.client.Stub 
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {empNo, password});
+ try {        Object _resp = _call.invoke(new Object[] {empNo, password});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -110,9 +110,9 @@ public class ValidEffectUserSoapBindingStub extends org.apache.axis.client.Stub 
         else {
             extractAttachments(_call);
             try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+                return (String) _resp;
+            } catch (Exception _exception) {
+                return (String) org.apache.axis.utils.JavaUtils.convert(_resp, String.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

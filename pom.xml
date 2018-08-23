@@ -107,7 +107,25 @@
 		    <artifactId>httpclient</artifactId>
 		    <version>4.5.2</version>
 		</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
+
+
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+
+		<!--&lt;!&ndash; https://mvnrepository.com/artifact/commons-discovery/commons-discovery &ndash;&gt;-->
+
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.4</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

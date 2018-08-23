@@ -28,6 +28,8 @@ public class LogBean implements Serializable{
 	private long id;
 	//用户名
 	private String userName;
+	//密码
+	private String password;
 	//真实姓名
 	private String realName;
 	//身份证号码

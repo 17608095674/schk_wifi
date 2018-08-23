@@ -1,6 +1,8 @@
 
 package cn.schk.oatest;
 
+import lombok.ToString;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -76,6 +78,7 @@ import javax.xml.bind.annotation.XmlType;
     "readTime",
     "finishTime"
 })
+@ToString
 public class WFInterfaceEntity {
 
     @XmlElement(name = "Instance_ID")
@@ -702,7 +705,6 @@ public class WFInterfaceEntity {
     public void setFinishTime(String value) {
         this.finishTime = value;
     }
-    
-    
+
 
 }

@@ -1,0 +1,12 @@
+body {
+    background: url('../images/pc_success.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: 0 0;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        background-image: url('../images/sj_success.jpg');
+        background-size: 100% auto;
+    }
+}

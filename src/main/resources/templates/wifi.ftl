@@ -45,14 +45,14 @@
               </a>
               </span>
                     </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="selectValues">无线认证</label>
-                        <select id="selectValues" name="category" class="form-control wifi-auth">
-                            <option value="1" selected="selected">无线认证</option>
-                            <option value="2">其他1</option>
-                            <option value="3">其他2</option>
-                        </select>
-                    </div>
+                    <#--<div class="form-group">-->
+                        <#--<label class="sr-only" for="selectValues">无线认证</label>-->
+                        <#--<select id="selectValues" name="category" class="form-control wifi-auth">-->
+                            <#--<option value="1" selected="selected">无线认证</option>-->
+                            <#--<option value="2">其他1</option>-->
+                            <#--<option value="3">其他2</option>-->
+                        <#--</select>-->
+                    <#--</div>-->
                     <div class="row">
                         <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-offset-3 col-xs-6">
                             <button id="login-btn" type="button" class="btn btn-default btn-submit">登录</button>
@@ -80,19 +80,6 @@
                         <div class="form-group">
                             <input name="realName" type="text" class="form-control icon-name" placeholder="姓名"
                                    aria-describedby="basic-addon9">
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input id="phoneNumber" name="phoneNumber" type="text" class="form-control icon-phone"
-                                       placeholder="手机号" aria-describedby="basic-addon3">
-                                <span class="input-group-btn">
-                    <button id="code-btn" type="button" class="btn btn-default btn-getcode">获取验证码</button>
-                  </span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input name="code" type="text" class="form-control icon-psw" placeholder="验证码"
-                                   aria-describedby="basic-addon4">
                         </div>
                         <div class="form-group">
                             <input name="idCard" type="text" class="form-control icon-ID-Card" placeholder="身份证号码"
@@ -132,6 +119,19 @@
                               <option value="1" selected="selected">人事部</option>
                               <option value="2">市场部</option>
                             </select> -->
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="phoneNumber" name="phoneNumber" type="text" class="form-control icon-phone"
+                                       placeholder="手机号" aria-describedby="basic-addon3">
+                                <span class="input-group-btn">
+                    <button id="code-btn" type="button" class="btn btn-default btn-getcode">获取验证码</button>
+                  </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input name="code" type="text" class="form-control icon-psw" placeholder="验证码"
+                                   aria-describedby="basic-addon4">
                         </div>
                     </div>
                     <div class="row">
@@ -224,30 +224,32 @@
         });
 
         $("#cancel-btn").click(function () {
-            $('#intro').show();
-            document.body.style.backgroundImage = "url('bootstrap/images/bg.png')";
-            $('#register').hide();
+            // $('#intro').show();
+            // document.body.style.backgroundImage = "url('bootstrap/images/bg.png')";
+            // $('#register').hide();
+            window.location.href = '/wifi';
+            // window.location.href = 'http://172.18.81.246:80/wifi';
         });
         // $('#intro').hide();
         // $('#register').show();
     });
 
+    //
     //根据工号获取名字
-    function getName() {
-        var account = $("#account").val();
-        $.ajax({
-            type: 'Get',
-            url: "/approve/findByAccount",
-            data: {account: account},
-            dataType: "json",
-            success: function (result) {
-                console.log(result);
-                var name = result["name"];
-                $("#name").val(name);
-            }
-        });
-    }
-
+    // function getName() {
+    //     var account = $("#account").val();
+    //     $.ajax({
+    //         type: 'Get',
+    //         url: "/approve/findByAccount",
+    //         data: {account: account},
+    //         dataType: "json",
+    //         success: function (result) {
+    //             console.log(result);
+    //             var name = result["name"];
+    //             $("#name").val(name);
+    //         }
+    //     });
+    // }
     //验证码
     $("#code-btn").click(function () {
         var that = $(this);
@@ -275,7 +277,7 @@
             //后台发送验证码
             $.ajax({
                 type: 'Get',
-                url: "/api/code",
+                url: "http://172.18.81.246:80/api/code",
                 data: {phoneNumber: phoneNumber},
                 dataType: "json",
                 success: function (result) {
@@ -290,7 +292,7 @@
     //登录验证
     $(document).ready(function () {
         $("#form-login").bootstrapValidator({
-            live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+            live: 'enabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
             feedbackIcons: {//根据验证结果显示的各种图标
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -319,11 +321,21 @@
             if ($("#form-login").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
                 $.ajax({
                     type: 'POST',
-                    url: "/api/login",
+                    // url: "http://localhost:80/api/login",
+                    url: "http://172.18.81.246:80/api/login",
                     data: $("#form-login").serialize(),
                     dataType: "json",
                     success: function (result) {
-                        alert("登录成功！")
+                       console.log(result);
+                        // alert("登录成功！")
+                        var res = result["status"];
+                        if (res == false) {
+                            alert(result["information"]);
+                        } else {
+                            //跳转页面
+                            // window.location.href = '/success';
+                            window.location.href = 'http://172.18.81.246:80/success';
+                        }
                     }
                 });
 
@@ -334,7 +346,7 @@
     //注册验证
     $(document).ready(function () {
         $("#form-regist").bootstrapValidator({
-            live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+            live: 'enabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
             feedbackIcons: {//根据验证结果显示的各种图标
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -352,15 +364,15 @@
                             message: '请输入1到10个字符'
                         },
                         regexp: {
-                            regexp: /^[a-zA-Z0-9_\. \u4e00-\u9fa5 ]+$/,
-                            message: '姓名只能由字母、数字、点、下划线和汉字组成 '
+                            regexp: /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/,
+                            message: '姓名格式错误 '
                         }
                     }
                 },
                 phoneNumber: {
                     validators: {
                         notEmpty: {//检测非空,radio也可用
-                            message: '手机号不能为空'
+                            message: '请输入手机号码'
                         },
                         regexp: {
                             regexp: /^([0-9]{11})?$/,
@@ -395,8 +407,8 @@
                             regexp: /^\+?[1-9][0-9]*$/,
                             message: '时间格式错误'
                         },
-                        lessThan:{
-                            inclusive:true,
+                        lessThan: {
+                            inclusive: true,
                             value: 90,
                             message: '最长申请 90 天！'
                         }
@@ -408,7 +420,7 @@
                             message: '请输入受理人工号'
                         },
                         regexp: {
-                            regexp: /^[0-9]*$/,
+                            regexp: /(^SCALG\d{4}$)|(^[0-9]{6}$)/,
                             message: '受理人工号格式错误'
                         }
                     }
@@ -417,6 +429,10 @@
                     validators: {
                         notEmpty: {//检测非空,radio也可用
                             message: '请输入受理人姓名'
+                        },
+                        regexp: {
+                            regexp: /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/,
+                            message: '受理人姓名格式错误'
                         }
                     }
                 },
@@ -427,8 +443,8 @@
                         },
                         stringLength: {//检测长度
                             min: 5,
-                            max: 30,
-                            message: '申请理由长度必须在5-40之间'
+                            max: 40,
+                            message: '申请理由5-40字'
                         }
                     }
                 }
@@ -440,7 +456,7 @@
             if ($("#form-regist").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
                 $.ajax({
                     type: 'POST',
-                    url: "/api/regist",
+                    url: "http://172.18.81.246:80/api/regist",
                     data: $("#form-regist").serialize(),
                     dataType: "json",
                     success: function (result) {

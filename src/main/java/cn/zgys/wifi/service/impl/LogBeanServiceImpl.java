@@ -81,6 +81,7 @@ public class LogBeanServiceImpl implements LogBeanService {
 				if (!StringUtils.isEmpty(log.getUserName())) {
 	                list.add(cb.like(root.get("userName").as(String.class),log.getUserName() + "%"));
 	            }
+
             	list.add(cb.greaterThanOrEqualTo(root.get("loginTime").as(Date.class),DateUtil.getHalfYearAgo()));
 	            
 //	            if (!StringUtils.isEmpty(log.getArea())) {

@@ -1,16 +1,16 @@
 package cn.zgys;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import javax.annotation.Resource;
-import javax.sound.midi.SysexMessage;
 
+import cn.schk.portaltest.ValidEffectUserService;
+import cn.schk.portaltest.ValidEffectUserServiceLocator;
+import cn.schk.portaltest.ValidEffectUserSoapBindingStub;
+import cn.schk.portaltest.ValidEffectUser_PortType;
+import cn.zgys.wifi.util.HttpClient4;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.auth.AuthScope;
@@ -59,8 +59,22 @@ public class SchkWifiApplicationTests {
 	@Test
 	public void contextLoads() {
 //		System.err.println(employeeBeanService.findByLevelEquals("4").size());
-		System.err.println(employeeBeanService.findByAccount("004323"));
-		
+//		System.err.println(employeeBeanService.findByAccount("004323"));
+		//1533188398115
+		OaWfWebService oa = new OaWfWebService();
+		OaWfWebServiceSoap soap = (OaWfWebServiceSoap) oa.getOaWfWebServiceSoap();
+		WFInterfaceEntity w = soap.getInterfaceEntity("WIFI", "WIFI", "123", "1533805199190", "1");
+		System.err.println(w);
+	}
+
+	@Test
+	public void test9(){
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("realName", "胡琨");
+
+
+		String s = HttpClient4.doPost("http://localhost:80/approveOut", null);
+		System.err.println(s);
 	}
 	
 	@Test
@@ -96,10 +110,10 @@ public class SchkWifiApplicationTests {
 //	public static void main(String[] args) {
 //		 DefaultHttpClient client = new DefaultHttpClient();
 //	        client.getCredentialsProvider().setCredentials(
-//	            new AuthScope("172.18.81.245", 8080, "iMC RESTful Web Services"),
+//	            new AuthScope("172.31.8.15", 8080, "iMC RESTful Web Services"),
 //	            new UsernamePasswordCredentials("admin", "Scal#$%(!@#"));
-////	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/online?size=60");
-//	        HttpPost post = new HttpPost("http://172.18.81.245:8080/imcrs/uam/acmUser/uamlogin?userName=002340&password=shan1981&ifEncrypt=0");
+////	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/online?size=60");
+//	        HttpPost post = new HttpPost("http://172.31.8.15:8080/imcrs/uam/acmUser/uamlogin?userName=002340&password=shan1981&ifEncrypt=0");
 ////	        post.
 ////	        post.addHeader("accept", "application/xml");
 ////	        String str1 = "\n" + 
@@ -151,9 +165,50 @@ public class SchkWifiApplicationTests {
 //	}
 	
 	public static void main(String[] args) {
-		String str = "<Root><Error><Code>0</Code><Message></Message></Error><Return>"
-				+ "<TaskDetialID>145522980</TaskDetialID></Return></Root>\n"; 
-		System.err.println(str.contains("<Code>0</Code>")); 
+//		String str = "<Root><Error><Code>0</Code><Message></Message></Error><Return>"
+//				+ "<TaskDetialID>145522980</TaskDetialID></Return></Root>\n";
+//		System.err.println(str.contains("<Code>0</Code>"));
+		String result = "";
+		try {
+//			ValidEffectUser_PortType veup = new ValidEffectUserSoapBindingStub();
+//			result = veup.validatorLegalUser("007962", "545154");
+			ValidEffectUserService service = new ValidEffectUserServiceLocator();
+			ValidEffectUserSoapBindingStub  stub = (ValidEffectUserSoapBindingStub)service.getValidEffectUser();
+			result = stub.validatorLegalUser("007962", "Zr89.06.07");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.err.println(result);
+
+	}
+
+	/**
+	 * 删除接入用户
+	 */
+	@Test
+	public void test10(){
+
+		DefaultHttpClient client = new DefaultHttpClient();
+		client.getCredentialsProvider().setCredentials(
+				new AuthScope("172.31.8.15", 8080, "iMC RESTful Web Services"),
+				new UsernamePasswordCredentials("admin", "Scal#$%(!@#"));
+		HttpDelete delete = new HttpDelete("http://172.31.8.15:8080/imcrs/uam/acmUser?userName=测试2&cancelType=1");
+//	        HttpPost post = new HttpPost("http://172.31.8.15:8080/imcrs/uam/acmUser/acmUserList");
+//	        post.
+		delete.addHeader("accept", "application/xml");
+		HttpResponse response = null;
+		try {
+			response = client.execute(delete);
+			System.err.println(response.getStatusLine());
+//				String s = EntityUtils.toString(response.getEntity());
+			String str = new String(EntityUtils.toString(response.getEntity()).getBytes("ISO-8859-1"),"UTF-8");
+			System.err.println(str);
+//				System.err.println(EntityUtils.toString(response.getEntity()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	/**
@@ -161,19 +216,21 @@ public class SchkWifiApplicationTests {
 	 */
 	@Test
 	public void test7() {
-		 DefaultHttpClient client = new DefaultHttpClient();
+		DefaultHttpClient client = new DefaultHttpClient();
 	        client.getCredentialsProvider().setCredentials(
-	            new AuthScope("172.18.81.245", 8080, "iMC RESTful Web Services"),
-	            new UsernamePasswordCredentials("admin", "Scal#$%(!@#"));
-//	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/online?size=60");
-	        HttpPost post = new HttpPost("http://172.18.81.245:8080/imcrs/uam/acmUser");//?userName=002340&password=shan1981&ifEncrypt=0
-	        post.addHeader("accept", "application/xml");
+	            new AuthScope("172.31.8.15", 8080, "iMC RESTful Web Services"),
+	                 new UsernamePasswordCredentials("admin", "Scal#$%(!@#"));
+//	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/online?size=60");
+	        HttpPost post = new HttpPost("http://172.31.8.15:8080/imcrs/uam/acmUser");//?userName=002340&password=shan1981&ifEncrypt=0
+//			HttpPost post = new HttpPost("http://172.31.8.15:8080/imcrs/uam/acmUser/applyService");//?userName=002340&password=shan1981&ifEncrypt=0
+//	        post.addHeader("accept", "application/xml");
+	        post.addHeader("Content-Type","application/xml");
 	        String str1 = "\n" + 
 	        		"\n" + 
 	        		"<acmUser>\n" + 
-	        		" <platUserId>95674</platUserId>\n" + 
-	        		" <userName>5674</userName>\n" + 
-	        		" <userPassword>095674</userPassword>\n" + 
+	        		" <platUserId>54575</platUserId>\n" +
+	        		" <userName>测试4</userName>\n" +
+	        		" <userPassword>123456</userPassword>\n" +
 	        		"<ifSelfModifyPsd>false</ifSelfModifyPsd>\n" + 	        		
 	        		" <appliedService>\n" + 
 	        		"  <serviceTemplateId>6</serviceTemplateId>\n" +
@@ -182,7 +239,8 @@ public class SchkWifiApplicationTests {
 	        		"</acmUser>\n" + 
 	        		"\n" + 
 	        		"";
-	        StringEntity entity = new StringEntity(str1, Charset.forName("UTF-8"));
+
+	        StringEntity entity = new StringEntity(str1, "UTF-8");
 	        entity.setContentType("application/xml");
 	        entity.setContentEncoding("UTF-8");
 	        post.setEntity(entity);
@@ -191,6 +249,7 @@ public class SchkWifiApplicationTests {
 				response = client.execute(post);
 				System.err.println(response.getStatusLine());
 //				String s = EntityUtils.toString(response.getEntity());
+				System.err.println(response.getEntity());
 				String str = new String(EntityUtils.toString(response.getEntity()).getBytes("ISO-8859-1"),"UTF-8");
 				System.err.println(str);
 //				System.err.println(EntityUtils.toString(response.getEntity()));
@@ -215,10 +274,10 @@ public class SchkWifiApplicationTests {
 	public void test4() {
 		 DefaultHttpClient client = new DefaultHttpClient();
 	        client.getCredentialsProvider().setCredentials(
-	            new AuthScope("172.18.81.245", 8080, "iMC RESTful Web Services"),
+	            new AuthScope("172.31.8.15", 8080, "iMC RESTful Web Services"),
 	            new UsernamePasswordCredentials("admin", "Scal#$%(!@#"));
-	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/online?size=100000");
-//	        HttpPost post = new HttpPost("http://172.18.81.245:8080/imcrs/uam/acmUser/acmUserList");
+	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/online?size=100000");
+//	        HttpPost post = new HttpPost("http://172.31.8.15:8080/imcrs/uam/acmUser/acmUserList");
 //	        post.
 	        get.addHeader("accept", "application/xml");
 	        HttpResponse response = null;
@@ -251,15 +310,15 @@ public class SchkWifiApplicationTests {
 		
 		 DefaultHttpClient client = new DefaultHttpClient();
 	        client.getCredentialsProvider().setCredentials(
-	            new AuthScope("172.18.81.245", 8080, "iMC RESTful Web Services"),
+	            new AuthScope("172.31.8.15", 8080, "iMC RESTful Web Services"),
 	            new UsernamePasswordCredentials("admin", "Scal#$%(!@#"));
-//	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/acmUser/002340");
-//	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/acmUser/userPwd/002340");
-	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/onlineStat?startDate=2018-07-10%2000%3A00&endDate=2018-07-10%203%3A59");
-//	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/plat/operator/1");
-//	        HttpPost post = new HttpPost("http://172.18.81.245:8080/imcrs/uam/acmUser/acmUserList");
+//	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/acmUser/002340");
+//	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/acmUser/userPwd/002340");
+	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/onlineStat?startDate=2018-07-10%2000%3A00&endDate=2018-07-10%203%3A59");
+//	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/plat/operator/1");
+//	        HttpPost post = new HttpPost("http://172.31.8.15:8080/imcrs/uam/acmUser/acmUserList");
 //	        post.
-//	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/online?size=100000");
+//	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/online?size=100000");
 	        get.addHeader("accept", "application/xml");
 	        HttpResponse response = null;
 	        String str = null;
@@ -308,9 +367,9 @@ public class SchkWifiApplicationTests {
 	public void test5() {
 		 DefaultHttpClient client = new DefaultHttpClient();
 	        client.getCredentialsProvider().setCredentials(
-	            new AuthScope("172.18.81.245", 8080, "iMC RESTful Web Services"),
+	            new AuthScope("172.31.8.15", 8080, "iMC RESTful Web Services"),
 	            new UsernamePasswordCredentials("admin", "Scal#$%(!@#"));
-	        HttpGet get = new HttpGet("http://172.18.81.245:8080/imcrs/uam/online?total=true");
+	        HttpGet get = new HttpGet("http://172.31.8.15:8080/imcrs/uam/online?total=true");
 	        get.addHeader("accept", "application/xml");
 	        HttpResponse response = null;
 			try {
@@ -338,7 +397,7 @@ public class SchkWifiApplicationTests {
 	
 	
 //	public static void main(String[] args) {
-//		String s = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><list><acmUser><userName>wpsadmin</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>wpsadmin</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/wpsadmin\"/></acmUser><acmUser><userName>wpsbind</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>wpsbind</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/wpsbind\"/></acmUser><acmUser><userName>000008</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ææµ·é¹°</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/000008\"/></acmUser><acmUser><userName>001950</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>éç²A</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/001950\"/></acmUser><acmUser><userName>002137</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ææ</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/002137\"/></acmUser><acmUser><userName>000011</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>å¨æå</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/000011\"/></acmUser><acmUser><userName>002481</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>æå</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/002481\"/></acmUser><acmUser><userName>000168</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ç³ç¥ä¹</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/000168\"/></acmUser><acmUser><userName>003342</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ç³å</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/003342\"/></acmUser><acmUser><userName>003340</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>è®¸çè¾</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/003340\"/></acmUser><link op=\"GET\" rel=\"next\" href=\"http://172.18.81.245:8080/imcrs/uam/acmUser/acmUserList?start=10&amp;size=10\"/></list>\n" + 
+//		String s = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><list><acmUser><userName>wpsadmin</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>wpsadmin</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/wpsadmin\"/></acmUser><acmUser><userName>wpsbind</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>wpsbind</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/wpsbind\"/></acmUser><acmUser><userName>000008</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ææµ·é¹°</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/000008\"/></acmUser><acmUser><userName>001950</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>éç²A</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/001950\"/></acmUser><acmUser><userName>002137</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ææ</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/002137\"/></acmUser><acmUser><userName>000011</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>å¨æå</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/000011\"/></acmUser><acmUser><userName>002481</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>æå</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/002481\"/></acmUser><acmUser><userName>000168</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ç³ç¥ä¹</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/000168\"/></acmUser><acmUser><userName>003342</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>ç³å</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/003342\"/></acmUser><acmUser><userName>003340</userName><userGroupId>1</userGroupId><userGroupName>æªåç»</userGroupName><fullName>è®¸çè¾</fullName><status>1</status><userCreateTime>2017-07-13</userCreateTime><invalidTime></invalidTime><ifWsmEnable>0</ifWsmEnable><ifEnableDelMAC>false</ifEnableDelMAC><link op=\"GET\" rel=\"self\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/003340\"/></acmUser><link op=\"GET\" rel=\"next\" href=\"http://172.31.8.15:8080/imcrs/uam/acmUser/acmUserList?start=10&amp;size=10\"/></list>\n" +
 //				"";
 //		
 //		try {
@@ -363,30 +422,30 @@ public class SchkWifiApplicationTests {
 		System.err.println(logBeanServiceImpl.getLogBeanById(3L).getLoginTime());
 		
 	}
-	@Test
-	public void test3() {
-//		PageBean pager = new PageBean();
-//		pager.setPageNumber(1);
-//		pager.setPageSize(10);
-//		LogBean log = new LogBean();
-//		log.setArea("区域一");
-//		logBeanServiceImpl.findAll1(pager, log);
-		LogBean log1 = new LogBean(0, "13608095674", "访客", "登录", "区域一", "13608095674", null, null);
-		LogBean log2= new LogBean(0, "12628294756", "访客", "登录", "区域二", "13608095674", null, null);
-		LogBean log3 = new LogBean(0, "13608095674", "内部人员", "登录", "区域一", "13608095674", null, null);
-		LogBean log4 = new LogBean(0, "13656740809", "内部人员", "注册", "区域一", "13608095674", null, null);
-		LogBean log5 = new LogBean(0, "13608095674", "访客", "登录", "区域一", "13608095674", null, null);
-		LogBean log6 = new LogBean(0, "13609085674", "内部人员", "登录", "区域二", "13608095674", null, null);
-		LogBean log7 = new LogBean(0, "13608095674", "访客", "登录", "区域一", "13608095674", null, null);
-		logBeanServiceImpl.saveLogBean(log1);
-		logBeanServiceImpl.saveLogBean(log2);
-		logBeanServiceImpl.saveLogBean(log3);
-		logBeanServiceImpl.saveLogBean(log4);
-		logBeanServiceImpl.saveLogBean(log5);
-		logBeanServiceImpl.saveLogBean(log6);
-		logBeanServiceImpl.saveLogBean(log7);
-		
-	}
+//	@Test
+//	public void test3() {
+////		PageBean pager = new PageBean();
+////		pager.setPageNumber(1);
+////		pager.setPageSize(10);
+////		LogBean log = new LogBean();
+////		log.setArea("区域一");
+////		logBeanServiceImpl.findAll1(pager, log);
+//		LogBean log1 = new LogBean(0, "13608095674", "访客", "登录", "区域一", "13608095674", null, null);
+//		LogBean log2= new LogBean(0, "12628294756", "访客", "登录", "区域二", "13608095674", null, null);
+//		LogBean log3 = new LogBean(0, "13608095674", "内部人员", "登录", "区域一", "13608095674", null, null);
+//		LogBean log4 = new LogBean(0, "13656740809", "内部人员", "注册", "区域一", "13608095674", null, null);
+//		LogBean log5 = new LogBean(0, "13608095674", "访客", "登录", "区域一", "13608095674", null, null);
+//		LogBean log6 = new LogBean(0, "13609085674", "内部人员", "登录", "区域二", "13608095674", null, null);
+//		LogBean log7 = new LogBean(0, "13608095674", "访客", "登录", "区域一", "13608095674", null, null);
+//		logBeanServiceImpl.saveLogBean(log1);
+//		logBeanServiceImpl.saveLogBean(log2);
+//		logBeanServiceImpl.saveLogBean(log3);
+//		logBeanServiceImpl.saveLogBean(log4);
+//		logBeanServiceImpl.saveLogBean(log5);
+//		logBeanServiceImpl.saveLogBean(log6);
+//		logBeanServiceImpl.saveLogBean(log7);
+//
+//	}
 	
 	@Test
 	public void test1() {
